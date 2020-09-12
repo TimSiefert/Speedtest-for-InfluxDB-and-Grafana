@@ -1,0 +1,18 @@
+FROM alpine AS qemu
+
+#QEMU Download
+ENV QEMU_URL https://github.com/balena-io/qemu/releases/download/v3.0.0%2Bresin/qemu-3.0.0+resin-arm.tar.gz
+RUN apk add curl && curl -L ${QEMU_URL} | tar zxvf - -C . --strip-components 1
+
+FROM arm32v7/python:3-alpine
+MAINTAINER Barry Carey <mcarey66@gmail.com>
+COPY --from=qemu qemu-arm-static /usr/bin
+
+VOLUME /src/
+COPY influxspeedtest.py requirements.txt config.ini /src/
+ADD influxspeedtest /src/influxspeedtest
+WORKDIR /src
+
+RUN pip install -r requirements.txt
+
+CMD ["python", "-u", "/src/influxspeedtest.py"]
