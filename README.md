@@ -1,7 +1,12 @@
+[![Docker Pulls](https://img.shields.io/docker/pulls/timsiefert/speedtest-for-influxdb-and-grafana)](https://hub.docker.com/r/timsiefert/speedtest-for-influxdb-and-grafana)
+
 **Speedtest.net Collector For InfluxDB and Grafana**
 ------------------------------
 
 ![Screenshot](https://puu.sh/tmfOA/b5576e88de.png)
+
+This repository is a fork of the repository [barrycarey/Speedtest-for-InfluxDB-and-Grafana](https://github.com/barrycarey/Speedtest-for-InfluxDB-and-Grafana) with the only goal to provide support for the ARM architecture to be used with e.g. a raspberry pi.
+All architecture are available under the same tag e.g. `latest` or `1.0.0`.
 
 This tool is a wrapper for speedtest-cli which allows you to run periodic speedtets and save the results to Influxdb 
 
