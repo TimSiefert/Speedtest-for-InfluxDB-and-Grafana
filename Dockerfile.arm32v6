@@ -1,0 +1,13 @@
+FROM arm32v6/python:3-alpine
+MAINTAINER Barry Carey <mcarey66@gmail.com>
+
+COPY qemu-arm-static /usr/bin
+
+VOLUME /src/
+COPY influxspeedtest.py requirements.txt config.ini /src/
+ADD influxspeedtest /src/influxspeedtest
+WORKDIR /src
+
+RUN pip install -r requirements.txt
+
+CMD ["python", "-u", "/src/influxspeedtest.py"]
